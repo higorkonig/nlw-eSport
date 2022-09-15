@@ -10,7 +10,7 @@ import logoImg from '/logo.svg';
 const games = ref<Game[]>([]);
 
 onMounted(async () => {
-  fetch('http://localhost:3000/games')
+  fetch('http://localhost:3333/games')
     .then((response) => response.json())
     .then((data) => {
       games.value = data;
@@ -26,7 +26,7 @@ onMounted(async () => {
     </h1>
     <div class="grid grid-cols-6 gap-6 mt-16">
       <template v-for="game in games" :key="game.id">
-        <game-banner :banner-url="game.bannerUrl" :title="game.title" :count="game._count.ads" />
+        <game-banner :banner-url="game.bannerUrl" :title="game.title" :count="game._count.ads" :id-game="game.id"/>
       </template>
     </div>
     <create-ad-banner />
