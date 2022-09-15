@@ -40,7 +40,7 @@ onMounted(async () => {
 </script>
 
 <template>
-    <main class="max-w-[1344px] mx-auto flex flex-col items-center my-20">
+    <div class="max-w-[1344px] mx-auto flex flex-col items-center my-20">
         <div>
             <button class="text-white flex items-center gap-2 mb-2 hover:text-violet-500 hover:duration-300"
                 @click="backPage()">
@@ -64,22 +64,21 @@ onMounted(async () => {
                     @conecte-player="openModal(ad.id)" />
             </template>
         </div>
-    </main>
-
-    <dialog-modal :is-open="isOpen" @close-modal="closeModal" dialog-title="">
-        <div class="flex justify-end">
-            <button @click="closeModal">
-                <ph-x :size="24" class="text-zinc-500" />
-            </button>
-        </div>
-        <div class="flex flex-col items-center">
-            <ph-check-circle :size="64" class="text-green-500" />
-            <span class="mt-6 mb-4 text-3xl font-black"> Let's play!</span>
-            <span class="text-1xl text-zinc-400"> Agora é só começar a jogar!</span>
-            <div class="text-center mt-5 mb-5">
-                <span class="mb-5 text-base font-semibold block">Adicione no Discord</span>
-                <span class="text-1xl rounded-lg text-white py-4 px-24 bg-zinc-900">{{discord}}</span>
+        <dialog-modal :is-open="isOpen" @close-modal="closeModal" dialog-title="">
+            <div class="flex justify-end">
+                <button @click="closeModal">
+                    <ph-x :size="24" class="text-zinc-500" />
+                </button>
             </div>
-        </div>
-    </dialog-modal>
+            <div class="flex flex-col items-center">
+                <ph-check-circle :size="64" class="text-green-500" />
+                <span class="mt-6 mb-4 text-3xl font-black"> Let's play!</span>
+                <span class="text-1xl text-zinc-400"> Agora é só começar a jogar!</span>
+                <div class="text-center mt-5 mb-5">
+                    <span class="mb-5 text-base font-semibold block">Adicione no Discord</span>
+                    <span class="text-1xl rounded-lg text-white py-4 px-24 bg-zinc-900">{{discord}}</span>
+                </div>
+            </div>
+        </dialog-modal>
+    </div>
 </template>

@@ -1,10 +1,12 @@
 <script setup lang="ts">
-import { RouterView } from 'vue-router'
 </script>
 
 <template>
-  <RouterView />
+  <router-view v-slot="{ Component, route }">
+    <transition name="scale" mode="out-in" appear>
+      <component :is="Component" :key="route.path" />
+    </transition>
+  </router-view>
 </template>
 <style >
-
 </style>
