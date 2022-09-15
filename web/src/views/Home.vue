@@ -5,9 +5,7 @@ import { onMounted, ref } from 'vue';
 import GameBanner from '@/components/GameBanner.vue';
 import CreateAdBanner from '@/components/CreateAdBanner.vue';
 
-
 import logoImg from '/logo.svg';
-
 
 const games = ref<Game[]>([]);
 
@@ -16,7 +14,7 @@ onMounted(async () => {
     .then((response) => response.json())
     .then((data) => {
       games.value = data;
-    });
+    }).catch(err => console.log(err));
 });
 </script>
 
