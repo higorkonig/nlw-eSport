@@ -7,6 +7,10 @@ import FormInput from '@/components/Form/FormInput.vue';
 import SelectInput from './Form/SelectInput.vue';
 import CheckInput from './Form/CheckInput.vue';
 
+import { useToast } from "vue-toastification";
+
+const toast = useToast();
+
 const isOpen = ref(false)
 
 const games = ref<Game[]>([]);
@@ -41,6 +45,45 @@ function updateGame(game: Game) {
     gameSelected.value = game;
 }
 
+function validateData(data: any) {
+    if (!gameSelected.value) {
+        toast.error('Jogo é obrigatório');
+        return false;
+    }
+    if (!name.value) {
+        toast.error('Nome é obrigatório');
+        return false;
+    }
+    if (!yearsPlaying.value) {
+        toast.error('Anos de experiência é obrigatório');
+        return false;
+    }
+    if (!discord.value) {
+        toast.error('Discord é obrigatório');
+        return false;
+    }
+    if (weekDays.value.length === 0) {
+        toast.error('Dias da semana é obrigatório');
+        return false;
+    }
+    if (!hourStart.value) {
+        toast.error('Horário de início é obrigatório');
+        return false;
+    }
+    if (!hourEnd.value) {
+        toast.error('Horário de término é obrigatório');
+        return false;
+    }
+
+    return true;
+}
+
+async function getGames() {
+    const response = await axios.get('http://localhost:3333/games');
+    games.value = response.data;
+    gameSelected.value = response.data[0];
+
+}
 async function onSubmit() {
     const data = {
         name: name.value,
@@ -53,26 +96,26 @@ async function onSubmit() {
         useVoiceChannel: useVoiceChannel.value
     }
 
+    if (!validateData(data)) {
+        return;
+    }
     try {
         const response = axios.post(`http://localhost:3333/games/${gameSelected.value?.id}/ads`, data);
-
-        console.log(response)
         closeModal();
-        alert('Anúncio criado com sucesso!');
+        toast.success("Anúncio criado com sucesso", {
+            timeout: 3000
+        });
     } catch (error) {
+        toast.error("Ops, parece que aconteceu algum problema interno :S", {
+            timeout: 3000
+        });
         console.log(error)
     }
-
-    console.log();
 }
-onMounted(async () => {
-    axios.get('http://localhost:3333/games')
-        .then(response => {
-            games.value = response.data;
-            gameSelected.value = response.data[0];
-        }).catch(err => console.log(err));
-});
 
+onMounted(async () => {
+    getGames();
+});
 
 </script>
 
