@@ -23,7 +23,7 @@ function closeModal() {
     isOpen.value = false
 }
 function openModal(id: string) {
-    axios.get(`http://localhost:3333/ads/${id}/discord`)
+    axios.get(`http://api2.immagino.dev/ads/${id}/discord`)
         .then(response => {
             discord.value = response.data.discord;
         });

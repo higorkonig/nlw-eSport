@@ -16,7 +16,7 @@ const settings = {
 }
 
 onMounted(async () => {
-  axios.get('http://localhost:3333/games')
+  axios.get('http://api2.immagino.dev/games')
     .then(response => {
       games.value = response.data;
     }).catch(err => console.log(err));

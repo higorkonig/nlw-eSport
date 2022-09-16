@@ -100,7 +100,7 @@ async function onSubmit() {
         return;
     }
     try {
-        const response = axios.post(`http://localhost:3333/games/${gameSelected.value?.id}/ads`, data);
+        const response = axios.post(`http://api2.immagino.dev/games/${gameSelected.value?.id}/ads`, data);
         closeModal();
         toast.success("Anúncio criado com sucesso", {
             timeout: 3000
