@@ -90,6 +90,6 @@ app.get('/ads/:id/discord', async (req, res) => {
   return res.status(200).json({ discord: ad.discord });
 });
 
-app.listen(3000, () => {
+app.listen(3002, () => {
   console.log('On :D');
 });
