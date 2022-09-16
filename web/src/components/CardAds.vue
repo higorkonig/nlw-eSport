@@ -28,6 +28,7 @@ const props = defineProps({
     },
 })
 
+const week: string[] = ["Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sab"];
 const emit = defineEmits(['conecte-player'])
 
 
@@ -43,7 +44,7 @@ const days = computed(() => {
 </script>
 
 <template>
-    <div class="w-full bg-[#2A2634] py-6 px-9 rounded-md">
+    <div class="w-full bg-[#2A2634] py-6 px-9 rounded-md ">
         <div class="text-white mb-2">
             <span class="text-sm text-zinc-400 block">Nome</span>
             <span class="text-sm font-black">{{name}}</span>
@@ -54,8 +55,11 @@ const days = computed(() => {
         </div>
         <div class="text-white mb-2 w-full">
             <span class="text-sm text-zinc-400 block">Disponibilidade</span>
-            <span class="text-sm font-black">{{days}} dias &#8226; {{hoursStart}} - {{hoursEnd}}</span>
+            <span class="text-sm font-black block mt-1">{{days}} dias &#8226; {{hoursStart}} - {{hoursEnd}}</span>
+            <span class="text-xs text-zinc-400  font-black" v-for="(day, index) in weekDays"
+                :key="index">&nbsp;&#8226;&nbsp;{{week[Number(day)]}}</span>
         </div>
+
         <div class="text-white mb-2">
             <span class="text-sm text-zinc-400 block">Chamada de áudio?</span>
             <span class="text-sm font-black text-emerald-400" v-if="useVoiceChannel">Sim</span>
