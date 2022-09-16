@@ -1,19 +1,25 @@
 
 <script setup lang="ts">
 import { onMounted, ref } from 'vue';
-
+import 'vue3-carousel/dist/carousel.css';
+import { Carousel, Slide, Navigation } from 'vue3-carousel';
 import GameBanner from '@/components/GameBanner.vue';
 import CreateAdBanner from '@/components/CreateAdBanner.vue';
 
 import logoImg from '/logo.svg';
+import axios from 'axios';
 
 const games = ref<Game[]>([]);
 
+const settings = {
+  itemsToShow: 4.5,
+  snapAlign: 'center',
+}
+
 onMounted(async () => {
-  fetch('http://localhost:3333/games')
-    .then((response) => response.json())
-    .then((data) => {
-      games.value = data;
+  axios.get('http://localhost:3333/games')
+    .then(response => {
+      games.value = response.data;
     }).catch(err => console.log(err));
 });
 </script>
@@ -21,14 +27,21 @@ onMounted(async () => {
 <template>
   <div class="max-w-[1344px] mx-auto flex flex-col items-center my-20">
     <img :src="logoImg" alt="">
-    <h1 class="text-6xl text-white font-black mt-20">Seu
+    <h1 class="text-6xl text-white font-black mt-10 mb-10">Seu
       <span class="bg-nlw-gradient text-transparent bg-clip-text">duo</span> está aqui
     </h1>
-    <div class="grid grid-cols-6 gap-6 mt-16">
-      <template v-for="game in games" :key="game.id">
-        <game-banner :banner-url="game.bannerUrl" :title="game.title" :count="game._count.ads" :id-game="game.id"/>
+    <carousel :settings="settings" :wrap-around="true" :autoplay="3000">
+      <slide v-for="(game, index) in games" :key="game.id">
+        <game-banner class="carousel__item" :banner-url="game.bannerUrl" :title="game.title" :count="game._count.ads"
+          :id-game="game.id" />
+      </slide>
+      <template #addons>
+        <navigation />
       </template>
-    </div>
+    </carousel>
     <create-ad-banner />
   </div>
 </template>
+<style>
+
+</style>

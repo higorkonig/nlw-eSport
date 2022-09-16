@@ -4,6 +4,7 @@ import { useRoute, useRouter } from 'vue-router';
 
 import CardAds from '@/components/CardAds.vue';
 import DialogModal from '@/components/DialogModal.vue';
+import axios from 'axios';
 
 const { params, query } = useRoute();
 const { go } = useRouter();
@@ -22,19 +23,18 @@ function closeModal() {
     isOpen.value = false
 }
 function openModal(id: string) {
-    fetch(`http://localhost:3333/ads/${id}/discord`)
-        .then(response => response.json())
-        .then(data => {
-            discord.value = data.discord;
-        })
+    axios.get(`http://localhost:3333/ads/${id}/discord`)
+        .then(response => {
+            discord.value = response.data.discord;
+        });
+
     isOpen.value = true
 }
 
 onMounted(async () => {
-    fetch(`http://localhost:3333/games/${params.id}/ads`)
-        .then((response) => response.json())
-        .then((data) => {
-            ads.value = data;
+    axios.get(`http://localhost:3333/games/${params.id}/ads`)
+        .then(response => {
+            ads.value = response.data;
         }).catch(err => console.log(err));
 });
 </script>

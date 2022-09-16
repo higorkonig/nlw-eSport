@@ -24,7 +24,7 @@ defineProps({
         <img :src="bannerUrl" alt="">
         <div class="w-full pt-16 pb-4 px-4 bg-game-gradient absolute bottom-0 left-0 right-0">
             <strong class="font-bold text-white block">{{ title }}</strong>
-            <span class="text-zinc-300 block">{{ count }} anúncios</span>
+            <span class="text-zinc-300 block">{{ count }} anúncio(s)</span>
         </div>
     </router-link>
 </template>

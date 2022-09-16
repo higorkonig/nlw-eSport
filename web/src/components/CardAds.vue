@@ -58,7 +58,7 @@ const days = computed(() => {
         </div>
         <div class="text-white mb-2">
             <span class="text-sm text-zinc-400 block">Chamada de áudio?</span>
-            <span class="text-sm font-black text-green-500" v-if="useVoiceChannel">Sim</span>
+            <span class="text-sm font-black text-emerald-400" v-if="useVoiceChannel">Sim</span>
             <span class="text-sm font-black text-yellow-500" v-else>Não</span>
         </div>
         <button

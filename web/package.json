@@ -12,10 +12,12 @@
   "dependencies": {
     "@headlessui/vue": "^1.7.1",
     "axios": "^0.27.2",
+    "keen-slider": "^6.8.1",
     "phosphor-vue": "^4.4.0",
     "pinia": "^2.0.21",
     "vue": "^3.2.38",
-    "vue-router": "^4.1.5"
+    "vue-router": "^4.1.5",
+    "vue3-carousel": "^0.1.46"
   },
   "devDependencies": {
     "@types/jsdom": "^20.0.0",
@@ -27,6 +29,7 @@
     "jsdom": "^20.0.0",
     "npm-run-all": "^4.1.5",
     "postcss": "^8.4.16",
+    "tailwind-scrollbar": "^2.0.1",
     "tailwindcss": "^3.1.8",
     "typescript": "~4.7.4",
     "vite": "^3.0.9",
