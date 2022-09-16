@@ -6,9 +6,10 @@ import DialogModal from './DialogModal.vue';
 import FormInput from '@/components/Form/FormInput.vue';
 import SelectInput from './Form/SelectInput.vue';
 import CheckInput from './Form/CheckInput.vue';
-
 import { useToast } from "vue-toastification";
 
+
+const emit = defineEmits(['update:games'])
 const toast = useToast();
 
 const isOpen = ref(false)
@@ -78,12 +79,6 @@ function validateData(data: any) {
     return true;
 }
 
-async function getGames() {
-    const response = await axios.get('http://localhost:3333/games');
-    games.value = response.data;
-    gameSelected.value = response.data[0];
-
-}
 async function onSubmit() {
     const data = {
         name: name.value,
@@ -100,8 +95,9 @@ async function onSubmit() {
         return;
     }
     try {
-        const response = axios.post(`http://api2.immagino.dev/games/${gameSelected.value?.id}/ads`, data);
+        const response = axios.post(`https://api2.immagino.dev/games/${gameSelected.value?.id}/ads`, data);
         closeModal();
+        emit('update:games')
         toast.success("Anúncio criado com sucesso", {
             timeout: 3000
         });
@@ -114,7 +110,9 @@ async function onSubmit() {
 }
 
 onMounted(async () => {
-    getGames();
+    const response = await axios.get('https://api2.immagino.dev/games');
+    games.value = response.data;
+    gameSelected.value = response.data[0];
 });
 
 </script>
@@ -129,7 +127,9 @@ onMounted(async () => {
             <button
                 class="py-3 px-4 bg-violet-500 hover:bg-violet-600 text-white  rounded flex items-center gap-3 hover:duration-300"
                 @click="openModal">
-                <ph-magnifying-glass-plus :size="24" class="" />Publicar anúncio
+                <span class="material-symbols-outlined">
+                    search
+                </span> Publicar anúncio
             </button>
         </div>
     </div>
@@ -191,7 +191,9 @@ onMounted(async () => {
                     @click="closeModal">Cancelar</button>
                 <button type="submit"
                     class="bg-violet-500 px-5 h-12 rounded-md font-semibold flex items-center gap-3 hover:bg-violet-600 hover:duration-300">
-                    <ph-game-controller :size="24" /> Encontrar duo
+                    <span class="material-symbols-outlined">
+                        stadia_controller
+                    </span> Encontrar duo
                 </button>
             </footer>
         </form>

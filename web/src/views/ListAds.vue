@@ -23,16 +23,15 @@ function closeModal() {
     isOpen.value = false
 }
 function openModal(id: string) {
-    axios.get(`http://api2.immagino.dev/ads/${id}/discord`)
+    axios.get(`https://api2.immagino.dev/ads/${id}/discord`)
         .then(response => {
             discord.value = response.data.discord;
         });
-
     isOpen.value = true
 }
 
 onMounted(async () => {
-    axios.get(`http://localhost:3333/games/${params.id}/ads`)
+    axios.get(`https://api2.immagino.dev/games/${params.id}/ads`)
         .then(response => {
             ads.value = response.data;
         }).catch(err => console.log(err));
@@ -42,9 +41,11 @@ onMounted(async () => {
 <template>
     <div class="max-w-[1344px] mx-auto flex flex-col items-center my-20">
         <div>
-            <button class="text-white flex items-center gap-2 mb-2 hover:text-violet-500 hover:duration-300"
+            <button class="text-white flex items-center gap-2 mb-4 hover:text-violet-500 hover:duration-300"
                 @click="backPage()">
-                <ph-arrow-u-up-left :size="32" /> voltar
+                <span class="material-symbols-outlined">
+                    arrow_back_ios
+                </span> voltar
             </button>
         </div>
         <div class="relative rounded-lg overflow-hidden">
@@ -67,11 +68,15 @@ onMounted(async () => {
         <dialog-modal :is-open="isOpen" @close-modal="closeModal" dialog-title="">
             <div class="flex justify-end">
                 <button @click="closeModal">
-                    <ph-x :size="24" class="text-zinc-500" />
+                    <span class="material-symbols-outlined text-zinc-500">
+                        close
+                    </span>
                 </button>
             </div>
             <div class="flex flex-col items-center">
-                <ph-check-circle :size="64" class="text-green-500" />
+                <span class="material-symbols-outlined text-7xl text-green-500">
+                    check_circle
+                </span>
                 <span class="mt-6 mb-4 text-3xl font-black"> Let's play!</span>
                 <span class="text-1xl text-zinc-400"> Agora é só começar a jogar!</span>
                 <div class="text-center mt-5 mb-5">

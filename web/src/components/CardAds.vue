@@ -64,7 +64,9 @@ const days = computed(() => {
         <button
             class="bg-violet-500 mt-3 px-4 text-white h-9 rounded-md font-semibold flex items-center gap-3 hover:bg-violet-600 hover:duration-300"
             @click="conectePlayer()">
-            <ph-game-controller :size="24" /> Conectar
+            <span class="material-symbols-outlined">
+                stadia_controller
+            </span> Conectar
         </button>
     </div>
 </template>

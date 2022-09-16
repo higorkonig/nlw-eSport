@@ -31,7 +31,9 @@ watch(selectedGame, (newValue, oldValue) => {
                 class="relative w-full cursor-pointer rounded-lg bg-zinc-900 py-3 px-4 text-sm text-left shadow-md focus:outline-none sm:text-sm">
                 <span class="block truncate">{{ selectedGame.title }}</span>
                 <span class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-4">
-                    <ph-arrow-down :size="20" class="text-gray-400" />
+                    <span class="material-symbols-outlined text-gray-400">
+                        keyboard_arrow_down
+                    </span>
                 </span>
             </ListboxButton>
 
@@ -51,7 +53,9 @@ watch(selectedGame, (newValue, oldValue) => {
                             ]">{{ game.title }}</span>
                             <span v-if="selected"
                                 class="absolute inset-y-0 left-0 flex items-center pl-3 text-violet-900">
-                                <ph-check :size="20" />
+                                <span class="material-symbols-outlined">
+                                    done
+                                </span>
                             </span>
                         </li>
                     </ListboxOption>

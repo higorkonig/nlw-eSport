@@ -570,6 +570,13 @@ dlv@^1.1.3:
   resolved "https://registry.npmjs.org/dlv/-/dlv-1.1.3.tgz"
   integrity sha512-+HlytyjlPKnIG8XuRG8WvmBP8xs8P71y+SKKS6ZXWoEgLuePxtDoUEiH7WkdePWrQ5JBpE6aoVqfZfJUQkjXwA==
 
+dom7@^4.0.4:
+  version "4.0.4"
+  resolved "https://registry.yarnpkg.com/dom7/-/dom7-4.0.4.tgz#8b68c5d8e5e2ed0fddb1cb93e433bc9060c8f3fb"
+  integrity sha512-DSSgBzQ4rJWQp1u6o+3FVwMNnT5bzQbMb+o31TjYYeRi05uAcpF8koxdfzeoe5ElzPmua7W7N28YJhF7iEKqIw==
+  dependencies:
+    ssr-window "^4.0.0"
+
 domexception@^4.0.0:
   version "4.0.0"
   resolved "https://registry.npmjs.org/domexception/-/domexception-4.0.0.tgz"
@@ -1156,11 +1163,6 @@ json-parse-better-errors@^1.0.1:
   resolved "https://registry.npmjs.org/json-parse-better-errors/-/json-parse-better-errors-1.0.2.tgz"
   integrity sha512-mrqyZKfX5EhL7hvqcV6WG1yYjnjeuYDzDhhcAAUrq8Po85NBQBJP+ZDUT75qZQ98IkUoBqdkExkukOU7Ts2wrw==
 
-keen-slider@^6.8.1:
-  version "6.8.1"
-  resolved "https://registry.yarnpkg.com/keen-slider/-/keen-slider-6.8.1.tgz#14d03e9216f98c65293cd7a95040c300c3e85e76"
-  integrity sha512-viUGYjhCgRMZOOiTUcOneY9Jm8c7E1NgoQF337N7fEXLqE96dLomKBfRB3sHGpJ9OZuHFoI+KNF0S4gSjV/y1g==
-
 levn@~0.3.0:
   version "0.3.0"
   resolved "https://registry.npmjs.org/levn/-/levn-0.3.0.tgz"
@@ -1385,11 +1387,6 @@ pathval@^1.1.1:
   version "1.1.1"
   resolved "https://registry.npmjs.org/pathval/-/pathval-1.1.1.tgz"
   integrity sha512-Dp6zGqpTdETdR63lehJYPeIOqpiNBNtc7BpWSLrOje7UaIsE5aY92r/AunQA7rsXvet3lrJ3JnZX29UPTKXyKQ==
-
-phosphor-vue@^4.4.0:
-  version "4.4.0"
-  resolved "https://registry.yarnpkg.com/phosphor-vue/-/phosphor-vue-4.4.0.tgz#d6353c231fde67eb577313107d54a36f3264b7b3"
-  integrity sha512-+7NBvWHgMaCN8AxLYdk5OJOmkTnPXOv5ZbYjHNnFQUrJ7Jg7VWiiFSgLRsnuAQIMNkYmTyWoUU7kspSm3nowVQ==
 
 picocolors@^1.0.0:
   version "1.0.0"
@@ -1663,6 +1660,11 @@ spdx-license-ids@^3.0.0:
   resolved "https://registry.npmjs.org/spdx-license-ids/-/spdx-license-ids-3.0.12.tgz"
   integrity sha512-rr+VVSXtRhO4OHbXUiAF7xW3Bo9DuuF6C5jH+q/x15j2jniycgKbxU09Hr0WqlSLUs4i4ltHGXqTe7VHclYWyA==
 
+ssr-window@^4.0.0, ssr-window@^4.0.2:
+  version "4.0.2"
+  resolved "https://registry.yarnpkg.com/ssr-window/-/ssr-window-4.0.2.tgz#dc6b3ee37be86ac0e3ddc60030f7b3bc9b8553be"
+  integrity sha512-ISv/Ch+ig7SOtw7G2+qkwfVASzazUnvlDTwypdLoPoySv+6MqlOV10VwPSE6EWkGjhW50lUmghPmpYZXMu/+AQ==
+
 string.prototype.padend@^3.0.0:
   version "3.1.3"
   resolved "https://registry.npmjs.org/string.prototype.padend/-/string.prototype.padend-3.1.3.tgz"
@@ -1713,6 +1715,14 @@ supports-preserve-symlinks-flag@^1.0.0:
   version "1.0.0"
   resolved "https://registry.npmjs.org/supports-preserve-symlinks-flag/-/supports-preserve-symlinks-flag-1.0.0.tgz"
   integrity sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==
+
+swiper@^8.4.2:
+  version "8.4.2"
+  resolved "https://registry.yarnpkg.com/swiper/-/swiper-8.4.2.tgz#a52e091a92a52b230bd076fb3ef19ae73baed2a2"
+  integrity sha512-nMD/RHVYxJxrLqjWQX2n0B94ANwpnuUv/3PUDT8Aaf+mSteFvZGFng4ypAYq70zW4svryyV+8TRlbRZ+6cgv9A==
+  dependencies:
+    dom7 "^4.0.4"
+    ssr-window "^4.0.2"
 
 symbol-tree@^3.2.4:
   version "3.2.4"
@@ -1905,11 +1915,6 @@ vue-tsc@^0.40.7:
   dependencies:
     "@volar/vue-language-core" "0.40.13"
     "@volar/vue-typescript" "0.40.13"
-
-vue3-carousel@^0.1.46:
-  version "0.1.46"
-  resolved "https://registry.yarnpkg.com/vue3-carousel/-/vue3-carousel-0.1.46.tgz#173ede857f7e6321f2acd7cb4de384436c690b33"
-  integrity sha512-bBZRpt5vuaS3SYkyt3pF5N+VWTKrDlYeNnLKKwePcrGu77AKqZjofFR113tZi4aFF7rblvk8WqFdBWTNX+yZcg==
 
 vue@^3.2.38:
   version "3.2.39"
